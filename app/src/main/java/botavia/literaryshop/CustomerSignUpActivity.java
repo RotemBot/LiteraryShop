@@ -1,5 +1,6 @@
 package botavia.literaryshop;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -117,7 +118,7 @@ public class CustomerSignUpActivity extends AppCompatActivity {
         Gender gender = Gender.MALE;
 
         if (selectGenderId == R.id.customerRadioFemale) {
-            gender = Gender.FEMALE
+            gender = Gender.FEMALE;
         }
 
         // Format the birth date
@@ -126,9 +127,21 @@ public class CustomerSignUpActivity extends AppCompatActivity {
         int day = dateScanner.nextInt();
         int month = dateScanner.nextInt();
         int year = dateScanner.nextInt();
-        Date birthDate = new Date(2,2,2);
+        Date birthDate = new Date(day,month,year);
 
-        Customer newCustomer = new Customer(name, address, date, email, gender, password);
+        Customer newCustomer = new Customer(name, address, birthDate, email, gender, password);
 
+        try {
+            MainActivity.databaseList.addCustomer(newCustomer);
+        }
+
+        catch (Exception a) {
+            errorMessage.setText(a.getMessage().toString());
+            errorMessage.setVisibility(View.VISIBLE);
+            return;
+        }
+
+        Intent loginInten = new Intent(this, ProductList.class);
+        startActivity(loginInten);
     }
 }

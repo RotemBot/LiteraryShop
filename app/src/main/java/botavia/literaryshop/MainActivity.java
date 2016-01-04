@@ -68,15 +68,15 @@ public class MainActivity extends AppCompatActivity {
      */
     public void startVerification(View v) {
         // Extract the username and password that were entered
-        EditText usernameE = (EditText)findViewById(R.id.editText);
+        EditText emailE = (EditText)findViewById(R.id.editText);
         EditText passwordE = (EditText)findViewById(R.id.editText2);
 
-        String username = usernameE.getText().toString();
+        String email = emailE.getText().toString();
         String password = passwordE.getText().toString();
 
         try {
             //find the user in the database
-            Customer customer = databaseList.findCustomerByUsername(username);
+            Customer customer = databaseList.findCustomerByEmail(email);
             if (customer.getPassword().equals(password)) {
                 // if the login in valid, continue to the store
                 Intent loginIntent = new Intent(this, ProductList.class);
