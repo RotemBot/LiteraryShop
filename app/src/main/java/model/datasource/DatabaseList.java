@@ -108,9 +108,9 @@ public class DatabaseList implements Backend {
 
     }
 
-    public Customer findCustomerByUsername(String username) throws Exception {
+    public Customer findCustomerByEmail(String email) throws Exception {
         for (Customer customer:Customers) {
-            if (customer.getUsername().equals(username)) {
+            if (customer.getEmail().equals(email)) {
                 return customer;
             }
         }
@@ -133,8 +133,8 @@ public class DatabaseList implements Backend {
             this.addBook(new StandAlone("JRR Tolkein", 1973, 1, "The Hobbit", 20, "Better-suited for kids", Genre.FANTASY));
             this.addBook(new Periodical("Time", 12.99, "Classic", Genre.JOURNAL, Frequency.MONTHFY));
 
-            this.addCustomer(new Customer("Rotem", "Nokdim", new Date(1993, 8, 21), "rotemfridman@gmail.com", Gender.FEMALE, "rotem", "rotem123"));
-            this.addCustomer(new Customer("Reut", "beitar", new Date(1993, 1, 1), "reuthamou@gmail.com", Gender.FEMALE, "reut", "reut123"));
+            this.addCustomer(new Customer("Rotem", "Nokdim", new Date(1993, 8, 21), "rotemfridman@gmail.com", Gender.FEMALE, "rotem123"));
+            this.addCustomer(new Customer("Reut", "beitar", new Date(1993, 1, 1), "reuthamou@gmail.com", Gender.FEMALE, "reut123"));
 
             this.addProvider(new Provider("Amazon", "US", "amazon@amazon.com", "amazon", "amazon123"));
             this.addProvider(new Provider("eBay", "US", "ebay@ebay.com", "ebay", "ebay123" ));

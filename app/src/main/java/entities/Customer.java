@@ -48,7 +48,6 @@ public class Customer {
         this.gender = gender;
         shoppingCart = new ShoppingCart(this);
 
-        this.username = username;
         this.password = password;
     }
 
@@ -96,8 +95,6 @@ public class Customer {
     public void setEmail (String myEmail) {
         this.email = myEmail;
     }
-
-    public String getUsername () { return username;}
 
 
     public String getPassword() {
