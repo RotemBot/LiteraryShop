@@ -28,9 +28,8 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/customerName"
-        android:layout_below="@+id/signUpForm"
+        android:layout_below="@+id/error_message_registration"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
         android:hint="Name" />
 
     <EditText
@@ -60,7 +59,7 @@
         android:layout_height="wrap_content"
         android:inputType="date"
         android:ems="10"
-        android:id="@+id/editText3"
+        android:id="@+id/birthDate"
         android:layout_below="@+id/customerEmail"
         android:layout_alignRight="@+id/customerEmail"
         android:layout_alignEnd="@+id/customerEmail"
@@ -70,9 +69,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/editText3"
-        android:layout_alignStart="@+id/editText3"
-        android:id="@+id/radioGroup">
+        android:layout_below="@+id/birthDate"
+        android:layout_alignLeft="@+id/birthDate"
+        android:layout_alignStart="@+id/birthDate"
+        android:id="@+id/genderSelect">
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -95,10 +95,10 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText4"
-        android:layout_below="@+id/radioGroup"
-        android:layout_alignLeft="@+id/radioGroup"
-        android:layout_alignStart="@+id/radioGroup"
+        android:id="@+id/password"
+        android:layout_below="@+id/genderSelect"
+        android:layout_alignLeft="@+id/genderSelect"
+        android:layout_alignStart="@+id/genderSelect"
         android:hint="password" />
 
     <EditText
@@ -106,11 +106,11 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText5"
+        android:id="@+id/confirmPassword"
         android:hint="Confirm Password"
-        android:layout_below="@+id/editText4"
-        android:layout_alignLeft="@+id/editText4"
-        android:layout_alignStart="@+id/editText4" />
+        android:layout_below="@+id/password"
+        android:layout_alignLeft="@+id/password"
+        android:layout_alignStart="@+id/password" />
 
     <Button
         android:background="@drawable/round_button"
@@ -120,7 +120,7 @@
         android:text="Sign Up"
         android:id="@+id/signUpButton"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/editText5"
+        android:layout_below="@+id/confirmPassword"
         android:layout_marginTop="20pt"
         android:onClick="register"/>
 
@@ -133,10 +133,12 @@
         android:layout_below="@+id/signUpForm"
         android:layout_alignLeft="@+id/customerName"
         android:layout_alignStart="@+id/customerName"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="10dp"
         android:textStyle="italic"
         android:textColor="@color/error_red"
         android:visibility="invisible"
-        />
+        android:textAlignment="textStart"
+        android:layout_alignRight="@+id/customerName"
+        android:layout_alignEnd="@+id/customerName" />
 
 </RelativeLayout>

@@ -15,7 +15,6 @@ public class Customer {
     protected ArrayList<Periodical> subscriptions = new ArrayList<>();
     protected Gender gender;
     protected ShoppingCart shoppingCart;
-    protected String username;
     protected String password;
 
     /**
@@ -30,7 +29,6 @@ public class Customer {
         email = null;
         gender = Gender.MALE;
         shoppingCart = new ShoppingCart(this);
-        username = "John Doe";
         password = "1234";
     }
 
@@ -42,7 +40,7 @@ public class Customer {
      * @param email customer's email
      * @param gender customer's gender
      */
-    public Customer(String name, String address, Date birthDate, String email, Gender gender, String username, String password) {
+    public Customer(String name, String address, Date birthDate, String email, Gender gender, String password) {
         this.name = name;
         this.address = address;
         this.birthDate = birthDate;
