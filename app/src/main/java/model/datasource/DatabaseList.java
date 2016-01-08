@@ -15,6 +15,8 @@ import model.backend.Backend;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Rotem on 28/12/2015.
@@ -144,5 +146,43 @@ public class DatabaseList implements Backend {
         catch (Exception a) {
 
         }
+    }
+    //ProductList Data
+
+    public static HashMap<String,List<String>> getData() {
+        HashMap<String, List<String>> BooksDetalis = new HashMap<String, List<String>>();
+
+        List<String> Science_Bookes = new ArrayList<String>();
+        Science_Bookes.add("Aragon");
+        Science_Bookes.add("Stephen King");
+        Science_Bookes.add("Narnia");
+        Science_Bookes.add("The Last Battle");
+
+        List<String> Children_bookes = new ArrayList<String>();
+        Children_bookes.add("Winnie the Pooh");
+        Children_bookes.add("Cinderella");
+        Children_bookes.add("The Wizard of Oz");
+        Children_bookes.add("Bambi");
+        Children_bookes.add("Monkey Jungle");
+
+        List<String> Drama_bookes = new ArrayList<String>();
+        Drama_bookes.add("Isle of Sofia");
+        Drama_bookes.add("Harry Potter");
+        Drama_bookes.add("The Hunger Games");
+
+        List<String> Magazine = new ArrayList<String>();
+        Magazine.add("Women");
+        Magazine.add("Style");
+        Magazine.add("National Geographic");
+
+        BooksDetalis.put("Science_Books", Science_Bookes);
+        BooksDetalis.put("Children_Bookes",Children_bookes);
+        BooksDetalis.put("Drama_Bookes",Drama_bookes);
+        BooksDetalis.put("Magazine",Magazine);
+
+        return BooksDetalis;
+
+
+
     }
 }

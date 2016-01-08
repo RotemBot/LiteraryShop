@@ -10,8 +10,12 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.HashMap;
+import java.util.List;
 
 import entities.Customer;
 import model.datasource.DatabaseList;
@@ -96,5 +100,13 @@ public class MainActivity extends AppCompatActivity {
         Intent signUpIntent = new Intent (this, CustomerSignUpActivity.class);
         startActivity(signUpIntent);
     }
+
+    HashMap <String,List<String>> BooksCategory;
+    List<String> BooksList;
+    ExpandableListView ExpList;
+    BooksAdapter adapter;
+
+
+
 
 }
