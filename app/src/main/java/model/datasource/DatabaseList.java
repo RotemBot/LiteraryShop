@@ -126,6 +126,56 @@ public class DatabaseList implements Backend {
         return false;
     }
 
+    public Provider findProviderByEmail(String email) throws Exception {
+        for (Provider provider:Providers) {
+            if (provider.getEmail().equals(email)) {
+                return provider;
+            }
+        }
+        throw new Exception("The email you have entered is not registered.");
+    }
+
+    public Provider findProviderById (int id) throws Exception {
+        // check the validity of the id
+        if (id > ProviderCounter || id < 0) {
+            throw new Exception("This provider ID is invalid.");
+        }
+        boolean search = true;
+        int searchIndex  = id;
+
+        // search direction indicators
+        boolean up = true;
+        boolean down = true;
+
+        while(search) {
+            Provider current = Providers.get(searchIndex);
+            // is the id a match?
+            if (current.getId() == id) {
+                return current;
+            }
+
+            // go down the list
+            else if (current.getId() < id && up) {
+                // check if we've already gone down
+                down = false;
+                searchIndex ++;
+            }
+
+            // go up the list
+            else if (current.getId() > id && down) {
+                // check if we've already gone up
+                up = false;
+                searchIndex --;
+            }
+
+            // id is missing
+            else search = false;
+        }
+
+        throw new Exception("This provider has been deleted.");
+
+    }
+
     public void setLists() {
         try {
             this.addBook(new Series("JK Rowling", 1988, 1, "Harry Potter", 59.99, "A great novel for all ages", Genre.FANTASY, 7));
@@ -136,9 +186,15 @@ public class DatabaseList implements Backend {
             this.addCustomer(new Customer("Rotem", "Nokdim", new Date(1993, 8, 21), "rotemfridman@gmail.com", Gender.FEMALE, "rotem123"));
             this.addCustomer(new Customer("Reut", "beitar", new Date(1993, 1, 1), "reuthamou@gmail.com", Gender.FEMALE, "reut123"));
 
-            this.addProvider(new Provider("Amazon", "US", "amazon@amazon.com", "amazon", "amazon123"));
-            this.addProvider(new Provider("eBay", "US", "ebay@ebay.com", "ebay", "ebay123" ));
-            this.addProvider(new Provider("Target", "US", "target@target.com", "target", "target123" ));
+            this.addProvider(new Provider("Amazon", "US", "amazon@amazon.com", "amazon123"));
+            this.addProvider(new Provider("eBay", "US", "ebay@ebay.com", "ebay123" ));
+            this.addProvider(new Provider("Target", "US", "target@target.com", "target123" ));
+
+            for (Provider provider:Providers) {
+                for (WrittenWork product:Products) {
+                    provider.addProduct(product);
+                }
+            }
         }
 
         catch (Exception a) {
