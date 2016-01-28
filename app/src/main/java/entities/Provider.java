@@ -13,7 +13,6 @@ public class Provider {
     protected String password;
     private float rating;
     private int experienceYears;
-
     private ArrayList<WrittenWork> products = new ArrayList<>();
 
     /**
