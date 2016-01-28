@@ -23,6 +23,8 @@ import model.datasource.DatabaseList;
 public class MainActivity extends AppCompatActivity {
     //Create the database lists
     public static DatabaseList databaseList = new DatabaseList();
+    //second click indicator
+    public static int clickListener = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +37,21 @@ public class MainActivity extends AppCompatActivity {
         databaseList.setLists();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if (clickListener == 0) {
+                    Snackbar.make(view, "Click again to log in as a Provider", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    clickListener = 1;
+                }
+
+                else {
+                    clickListener = 0;
+                    Intent providerSignInIntent  = new Intent(MainActivity.this, ProviderLoginActivity.class);
+                    startActivity(providerSignInIntent);
+                }
             }
         });
     }

@@ -10,11 +10,9 @@ public class Provider {
     protected String address;
     protected String phoneNumber;
     protected String email;
-    protected String username;
     protected String password;
-    private double rating;
+    private float rating;
     private int experienceYears;
-
     private ArrayList<WrittenWork> products = new ArrayList<>();
 
     /**
@@ -22,8 +20,9 @@ public class Provider {
      */
     public Provider() {
         super();
-        rating = 0.0;
+        rating = 0;
         experienceYears = 0;
+        id = -1;
     }
 
     /**
@@ -32,18 +31,17 @@ public class Provider {
      * @param address customer's address
      * @param email customer's email
      */
-    public Provider(String name, String address, String email, String username, String password)
+    public Provider(String name, String address, String email, String password)
     {
         this.name = name;
         this.address = address;
         this.email = email;
-        this.username = username;
         this.password = password;
-        this.rating = 0.0;
+        this.rating = 0;
         this.experienceYears = 0;
     }
 
-    public double getRating() {
+    public float getRating() {
         return rating;
     }
 
@@ -75,6 +73,9 @@ public class Provider {
     }
     public ArrayList<WrittenWork> getProducts() { return products; }
 
+    public int getNumOfProducts() {
+        return products.size();
+    }
 
     public int getId() {
         return id;
@@ -83,4 +84,13 @@ public class Provider {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
 }
